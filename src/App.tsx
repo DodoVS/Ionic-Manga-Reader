@@ -3,18 +3,18 @@ import {
   IonApp,
   IonIcon,
   IonLabel,
+  IonPage,
   IonRouterOutlet,
   IonTabBar,
   IonTabButton,
   IonTabs,
+  isPlatform,
   setupIonicReact
 } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
-import { ellipse, square, triangle } from 'ionicons/icons';
-import Tab1 from './pages/Tab1';
-import Tab2 from './pages/Tab2';
-import Tab3 from './pages/Tab3';
-
+import { home, accessibility, search ,reload } from 'ionicons/icons';
+import Manga from './pages/Manga';
+import Chapter from './pages/Chapter';
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
 
@@ -33,44 +33,86 @@ import '@ionic/react/css/display.css';
 
 /* Theme variables */
 import './theme/variables.css';
+import Search from './pages/Search';
+import { History } from './pages/History';
+import { FollowedManga } from './pages/FollowedManga';
+import Account from './pages/Account';
+import Login from './pages/Login';
+import Register from './pages/Register';
+import { useEffect } from 'react';
+import {getCurrentUser} from './config/firebaseConfig';
+import { useDispatch } from 'react-redux';
+import { setUserState } from './reducers/action';
+import OneSignal from 'onesignal-cordova-plugin';
 
 setupIonicReact();
 
-const App: React.FC = () => (
-  <IonApp>
-    <IonReactRouter>
-      <IonTabs>
-        <IonRouterOutlet>
-          <Route exact path="/tab1">
-            <Tab1 />
-          </Route>
-          <Route exact path="/tab2">
-            <Tab2 />
-          </Route>
-          <Route path="/tab3">
-            <Tab3 />
-          </Route>
-          <Route exact path="/">
-            <Redirect to="/tab1" />
-          </Route>
-        </IonRouterOutlet>
-        <IonTabBar slot="bottom">
-          <IonTabButton tab="tab1" href="/tab1">
-            <IonIcon icon={triangle} />
-            <IonLabel>Tab 1</IonLabel>
-          </IonTabButton>
-          <IonTabButton tab="tab2" href="/tab2">
-            <IonIcon icon={ellipse} />
-            <IonLabel>Tab 2</IonLabel>
-          </IonTabButton>
-          <IonTabButton tab="tab3" href="/tab3">
-            <IonIcon icon={square} />
-            <IonLabel>Tab 3</IonLabel>
-          </IonTabButton>
-        </IonTabBar>
-      </IonTabs>
-    </IonReactRouter>
-  </IonApp>
-);
+const App: React.FC = () => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    getCurrentUser().then((user:any) =>{
+      if(user){
+        dispatch(setUserState(user.email))
+      }
+    })
+  }, [])
+  return (
+    <IonApp>
+      <IonReactRouter>
+        <IonTabs>
+          <IonRouterOutlet>
+            <Route exact path="/history">
+              <History />
+            </Route>
+            <Route exact path="/followed">
+              <FollowedManga />
+            </Route>
+            <Route path="/manga/:id" exact>
+              <Manga />
+            </Route>
+            <Route path="/manga/:id/chapter/:idChapter" exact>
+              <Chapter />
+            </Route>
+            <Route exact path="/">
+              <Redirect to="/followed" />
+            </Route>
+            <Route exact path="/search">
+              <Search />
+            </Route>
+            <Route exact path="/account">
+              <Account />
+            </Route>
+            <Route exact path="/login">
+              <Login />
+            </Route>
+            <Route exact path="/register">
+              <Register />
+            </Route>
+          </IonRouterOutlet>
+
+          <IonTabBar slot="bottom">
+            <IonTabButton tab="followed" href="/followed">
+              <IonIcon icon={home} />
+              <IonLabel>Home</IonLabel>
+            </IonTabButton>
+            <IonTabButton tab="history" href="/history">
+              <IonIcon icon={reload} />
+              <IonLabel>History</IonLabel>
+            </IonTabButton>
+            <IonTabButton tab="search" href="/search">
+              <IonIcon icon={search} />
+              <IonLabel>Search</IonLabel>
+            </IonTabButton>
+            <IonTabButton tab="account" href="/account">
+              <IonIcon icon={accessibility} />
+              <IonLabel>Account</IonLabel>
+            </IonTabButton>
+          </IonTabBar>
+        </IonTabs>
+      </IonReactRouter>
+    </IonApp>
+  );
+}
+
 
 export default App;

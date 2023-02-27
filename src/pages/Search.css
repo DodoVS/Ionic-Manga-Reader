@@ -1,0 +1,17 @@
+.ion-item-spacing{
+    padding: 5px 10px;
+}
+
+@media screen and (min-width: 1025px) {
+    .cover-img{
+        width: 15%;
+        margin-left: 1%;
+    }
+}
+
+@media screen and (min-width: 300px) {
+    .cover-img{
+        width: 50%;
+        margin-left: 1%;
+    }
+}

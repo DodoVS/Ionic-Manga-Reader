@@ -1,0 +1,11 @@
+.page-img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media screen and (min-width: 1025px) {
+    .page-img{
+        width: 50%;
+    }
+}
