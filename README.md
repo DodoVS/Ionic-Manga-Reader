@@ -15,18 +15,14 @@ Ionic Manga Reader is simple cross-platform manga reader written in Ionic. Appli
 
 What will you need:
 - Nodejs recommended the latest version.
-- Firebase service for user autorization and notification
-- OneSignal service for notification
 
 After downloading the repository you need to download every dependecies to do that you can write below command.
 
 ### `npm install` 
 
-Next think you must change values in file `firebaseConfig.ts` which is located in directory `src/config`. In this file you need to change firebaseConfig variable which is given by Firebase service. Second think to change is in file `index.tsx` which is located in `src`. In this file you can find function `OneSignalInit()` where you can change OneSignal ID for your service.
-
 To run project in browser you can write below command.
 
-### `ionic server`
+### `npm run start`
 
 
 ## Building for Android
