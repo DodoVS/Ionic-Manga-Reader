@@ -52,8 +52,7 @@ const Manga: React.FC<any> = (props) => {
 
   const clickChapter = (chapter: any) => {
     readChapter(chapter, manga, cover);
-    var link: string = "/manga/" + mangaid.id + "/chapter/" + chapter.id;
-    history.push(`/manga/${mangaid.id}/chapter/${chapter.id}`);
+    history.push(`/chapter/${chapter.id}`);
     history.go(0)
   }
 
@@ -81,10 +80,10 @@ const Manga: React.FC<any> = (props) => {
           </IonText>
           <IonRow className="ion-justify-content-center">
             {
-              !isFollowed && <IonButton onClick={() => clickFollow()}>Follow</IonButton>
+              !isFollowed && <IonButton shape="round" onClick={() => clickFollow()}>Follow</IonButton>
             }
             {
-              isFollowed && <IonButton onClick={() => clickUnfollow()}>Unfollow</IonButton>
+              isFollowed && <IonButton shape="round" color="danger" onClick={() => clickUnfollow()}>Unfollow</IonButton>
             }
           </IonRow>
           <IonRow>

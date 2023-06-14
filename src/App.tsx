@@ -12,7 +12,7 @@ import {
   setupIonicReact
 } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
-import { home, accessibility, search ,reload } from 'ionicons/icons';
+import { home, search ,reload, settings } from 'ionicons/icons';
 import Manga from './pages/Manga';
 import Chapter from './pages/Chapter';
 /* Core CSS required for Ionic components to work properly */
@@ -36,7 +36,7 @@ import './theme/variables.css';
 import Search from './pages/Search';
 import { History } from './pages/History';
 import { FollowedManga } from './pages/FollowedManga';
-import { useEffect } from 'react';
+import { Settings } from './pages/Settings';
 
 setupIonicReact();
 
@@ -55,7 +55,7 @@ const App: React.FC = () => {
             <Route path="/manga/:id" exact>
               <Manga />
             </Route>
-            <Route path="/manga/:id/chapter/:idChapter" exact>
+            <Route path="/chapter/:idChapter" exact>
               <Chapter />
             </Route>
             <Route exact path="/">
@@ -63,6 +63,9 @@ const App: React.FC = () => {
             </Route>
             <Route exact path="/search">
               <Search />
+            </Route>
+            <Route exact path="/settings">
+              <Settings />
             </Route>
           </IonRouterOutlet>
 
@@ -79,9 +82,9 @@ const App: React.FC = () => {
               <IonIcon icon={search} />
               <IonLabel>Search</IonLabel>
             </IonTabButton>
-            <IonTabButton tab="account" href="/">
-              <IonIcon icon={accessibility} />
-              <IonLabel>Account</IonLabel>
+            <IonTabButton tab="account" href="/settings">
+              <IonIcon icon={settings} />
+              <IonLabel>Settings</IonLabel>
             </IonTabButton>
           </IonTabBar>
         </IonTabs>

@@ -40,7 +40,7 @@ export const FollowedManga: React.FC = () => {
                                         </IonCol>
                                         <IonCol>
                                             <IonText onClick={() => clickManga(result.id)}>
-                                                <h3>{result.title}</h3>
+                                                <h1>{result.title}</h1>
                                             </IonText>
                                         </IonCol>
                                     </IonItem>

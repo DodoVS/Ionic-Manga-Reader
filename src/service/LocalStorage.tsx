@@ -145,3 +145,19 @@ export const unFollowManga = (mangaid: string) => {
         localStorage.setItem("FollowManga", JSON.stringify(newArray));
     }
 }
+
+export const clearHistory = () => {
+    localStorage.removeItem("ReadHistory");
+}
+
+export const clearFollow = () => {
+    localStorage.removeItem("FollowManga");
+}
+
+export const exportData = () => {
+    var storage = {
+        history: localStorage.getItem("ReadHistory"),
+        follow: localStorage.getItem("FollowManga")
+    }
+    return storage;
+}

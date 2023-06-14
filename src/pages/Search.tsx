@@ -64,42 +64,6 @@ const Search: React.FC = () => {
 
     const nextResult = (e: any) => {
         var length = Number(searchResult?.length) + 1;
-        // if (text != "" && text != null) {
-        //     axios({
-        //         method: 'get',
-        //         url: 'https://api.mangadex.org/manga/',
-        //         params: {
-        //             title: text,
-        //             offset: length,
-        //         }
-        //     }).then(response => {
-        //         var array: any[] = Object.assign([], searchResult);;
-        //         setSearchResult([
-        //             ...array,
-        //             ...response.data.data
-        //         ]);
-        //         var result = response.data.data;
-        //         for (var i = 0; i < result.length; i++) {
-        //             var result1 = result[i].relationships
-        //             for (var j = 0; j < result1.length; j++) {
-        //                 if (result1[j].type === "cover_art") {
-        //                     axios({
-        //                         method: 'get',
-        //                         url: 'https://api.mangadex.org/cover/' + result1[j].id
-        //                     }).then((response1) => {
-        //                         var el = "https://uploads.mangadex.org/covers/" + response1.data.data.relationships[0].id + '/' + response1.data.data.attributes.fileName + ".256.jpg";
-        //                         setArrayimg(oldarray => [
-        //                             ...oldarray,
-        //                             el
-        //                         ]);
-        //                     })
-        //                 }
-        //             }
-        //         }
-        //     })
-        // }
-        
-
 
         var arrayOfSearch: any[] = [];
         if (text != "" && text != null) {

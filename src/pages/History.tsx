@@ -54,6 +54,7 @@ export const History: React.FC<any> = () => {
             <IonContent>
                 <IonCard>
                     <IonList>
+
                         {
                             historyList && historyList.map((result: any) => {
                                 return (
