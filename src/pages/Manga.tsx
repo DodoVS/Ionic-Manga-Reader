@@ -77,7 +77,7 @@ const Manga: React.FC<any> = (props) => {
         </IonHeader>
         <IonContent fullscreen className='ion-padding'>
           <IonText className='ion-sm'>
-            <h2 className='ion-text-center'>{manga.attributes.title.en && manga.attributes.title.en} {!manga.attributes.title.en && manga.attributes.title.ja} {!manga.attributes.title.en && !manga.attributes.title.ja && manga.attributes.title['ja-ro']}</h2>
+            <h1 className='ion-text-center'>{manga.attributes.title.en && manga.attributes.title.en} {!manga.attributes.title.en && manga.attributes.title.ja} {!manga.attributes.title.en && !manga.attributes.title.ja && manga.attributes.title['ja-ro']}</h1>
           </IonText>
           <IonRow className="ion-justify-content-center">
             {
@@ -89,11 +89,11 @@ const Manga: React.FC<any> = (props) => {
           </IonRow>
           <IonRow>
             <IonCol sizeXl='6' size='12' className='img-container'>
-              <IonImg src={cover} className='cover-img'></IonImg>
+              <IonImg src={cover} alt={manga.attributes.description.en} className='cover-img'></IonImg>
             </IonCol>
             <IonCol sizeXl='6' size='12'>
               <IonText>
-                <h5><b>Description:</b></h5>
+                <h3><b>Description:</b></h3>
                 <p>{manga.attributes.description.en}</p>
                 <p><b>Year: </b>{manga.attributes.year}</p>
               </IonText>
@@ -101,7 +101,7 @@ const Manga: React.FC<any> = (props) => {
           </IonRow>
 
           <IonText>
-            <h5>Chapters:</h5>
+            <h3>Chapters</h3>
           </IonText>
           {
             chapters && Object.keys(chapters).map((key: any) => {
@@ -109,7 +109,7 @@ const Manga: React.FC<any> = (props) => {
                 <IonCard key={key}>
                   <IonCardHeader>
                     <IonText color="dark">
-                      <h5>Volume: {chapters[key].volume}</h5>
+                      <h3>Volume {chapters[key].volume}</h3>
                     </IonText>
                   </IonCardHeader>
                   <IonCardContent>
@@ -121,9 +121,9 @@ const Manga: React.FC<any> = (props) => {
                             color = "medium"
                         }
                         return (
-                          <IonRow key={chapters[key].chapters[key1].id}>
+                          <IonRow className="row" key={chapters[key].chapters[key1].id}>
                             <IonText color={color} onClick={() => clickChapter(chapters[key].chapters[key1])}>
-                              <p>  Chapter {chapters[key].chapters[key1].chapter}</p>
+                              <h1>  Chapter {chapters[key].chapters[key1].chapter}</h1>
                             </IonText>
                           </IonRow>
                         )
@@ -155,7 +155,7 @@ const Manga: React.FC<any> = (props) => {
         <IonContent fullscreen>
           <IonHeader collapse="condense">
             <IonToolbar>
-              <IonTitle size="large">Tab 3</IonTitle>
+              <IonTitle size="large">Page is not existing</IonTitle>
             </IonToolbar>
           </IonHeader>
         </IonContent>

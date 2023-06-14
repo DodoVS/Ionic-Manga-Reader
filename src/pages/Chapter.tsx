@@ -76,13 +76,15 @@ const Chapter: React.FC = () => {
                 </IonToolbar>
             </IonHeader>
             <IonContent fullscreen>
-                <IonList>
+                <IonList role="list">
                     {
                         data.map((element: string, i) => {
                             return (
-                                <IonRow key={i} className="page-img ion-justify-content-center">
-                                    <IonImg onIonError={(e) => imgError(element, e)} src={element} />
-                                </IonRow>
+                                <IonItem key={i} role="listitem">
+                                    <IonRow className="page-img ion-justify-content-center">
+                                        <IonImg onIonError={(e) => imgError(element, e)} src={element} alt="Manga pages" />
+                                    </IonRow>
+                                </IonItem>
                             )
                         })
                     }

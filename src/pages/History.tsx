@@ -62,12 +62,12 @@ export const History: React.FC<any> = () => {
 
                                         </IonRow>
                                         <IonCol sizeXl="1" size="4">
-                                            <IonImg src={result.cover+".256.jpg"}></IonImg>
+                                            <IonImg onClick={() => goToManga(result.id)} src={result.cover+".256.jpg"} alt={result}></IonImg>
                                         </IonCol>
                                         <IonCol>
                                         <IonText>
-                                            <h3 onClick={() => goToManga(result.id)}>{result.title}</h3>
-                                            <p>Chapter {result.chapter}</p>
+                                            <h1 onClick={() => goToManga(result.id)}>{result.title}</h1>
+                                            <h2>Chapter {result.chapter}</h2>
                                         </IonText>
                                         </IonCol>
                                         

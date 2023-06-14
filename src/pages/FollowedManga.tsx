@@ -2,13 +2,13 @@ import { IonCard, IonCol, IonContent, IonHeader, IonImg, IonItem, IonList, IonPa
 import { useEffect, useState } from "react";
 import { useHistory } from "react-router";
 
-export const FollowedManga: React.FC  = () => {
+export const FollowedManga: React.FC = () => {
     const [followeManga, setFolloweManga] = useState<any[]>([]);
     const history = useHistory();
 
     useEffect(() => {
         var followed = localStorage.getItem("FollowManga");
-        if(followed != null){
+        if (followed != null) {
             setFolloweManga(JSON.parse(followed));
         }
     }, []);
@@ -36,15 +36,13 @@ export const FollowedManga: React.FC  = () => {
                                 return (
                                     <IonItem key={result.id}>
                                         <IonCol sizeXl="1" size="4">
-                                            <IonImg src={result.cover}></IonImg>
+                                            <IonImg src={result.cover} alt={result.title} onClick={() => clickManga(result.id)}></IonImg>
                                         </IonCol>
                                         <IonCol>
-                                        <IonText onClick={() => clickManga(result.id)}>
-                                            <h3>{result.title}</h3>
-                                        </IonText>
+                                            <IonText onClick={() => clickManga(result.id)}>
+                                                <h3>{result.title}</h3>
+                                            </IonText>
                                         </IonCol>
-                                        
-                                        
                                     </IonItem>
                                 );
                             })
@@ -53,7 +51,7 @@ export const FollowedManga: React.FC  = () => {
                         {
                             followeManga.length == 0 && <IonText className="ion-text-center">
                                 <h1>There isn't any manga! Try to search for a new one!</h1>
-                                </IonText>
+                            </IonText>
                         }
                     </IonList>
                 </IonCard>
